@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 const { dbURI, dbOps, port } = require('./config/environment');
 
@@ -18,6 +19,11 @@ mongoose
   .connect(dbURI, dbOps)
   .then(() => console.log('MongoDB Connected!'))
   .catch(err => console.log('MongoDB failed to connect!', err));
+
+// passport middleware
+app.use(passport.initialize());
+// passport config
+require('./config/passport')(passport);
 
 app.use('/api/users', users);
 app.use('/api/profile', profile);
