@@ -3,6 +3,11 @@ import jwtDecode from 'jwt-decode';
 import setAuthToken from '../../utils/setAuthToken';
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
 
+// Set logged in user
+export const setCurrentUser = decoded => ({
+  type: SET_CURRENT_USER,
+  payload: decoded
+});
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -36,9 +41,3 @@ export const loginUser = userData => dispatch => {
       payload: err.response.data
     }));
 };
-
-// Set logged in user
-export const setCurrentUser = decoded => ({
-  type: SET_CURRENT_USER,
-  payload: decoded
-});
