@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
@@ -34,36 +35,35 @@ router.post('/register', (req, res) => {
 
   User
     .findOne({ email: req.body.email })
-    .then(user => {
+    .then((user) => {
       if (user) {
         errors.email = 'Email already exists';
         return res.status(400).json(errors);
       }
-      else {
-        const avatar = gravatar.url(req.body.email, {
-          s: '200', // Size
-          r: 'pg', // Rating
-          d: 'mm' // Default
-        });
 
-        const newUser = new User({
-          name: req.body.name,
-          email: req.body.email,
-          password: req.body.password,
-          avatar: avatar
-        });
+      const avatar = gravatar.url(req.body.email, {
+        s: '200', // Size
+        r: 'pg', // Rating
+        d: 'mm' // Default
+      });
 
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser
-              .save()
-              .then(user => res.json(user))
-              .catch(err => console.log(err));
-          });
+      const newUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        avatar
+      });
+
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
         });
-      }
+      });
     })
     .catch();
 });
@@ -79,13 +79,13 @@ router.post('/login', (req, res) => {
   // Check Validation
   if (!isValid) return res.status(400).json(errors);
 
-  const email = req.body.email;
-  const password = req.body.password;
+  const { email } = req.body;
+  const { password } = req.body;
 
 
   User
     .findOne({ email })
-    .then(user => {
+    .then((user) => {
       if (!user) {
         errors.email = 'User not found';
         return res.status(404).json(errors);
@@ -93,7 +93,7 @@ router.post('/login', (req, res) => {
 
       bcrypt
         .compare(password, user.password)
-        .then(isMatched => {
+        .then((isMatched) => {
           if (isMatched) {
             // return res.status(200).json({ msg: 'Success' });
             const payload = {
@@ -103,7 +103,7 @@ router.post('/login', (req, res) => {
             };
 
             jwt.sign(payload, secret, { expiresIn: 3600 }, (err, token) => {
-              res.json({ success: true, token: 'Bearer ' + token })
+              res.json({ success: true, token: `Bearer ${token}` });
             });
           }
           else {
