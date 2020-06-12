@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import jtwDecode from 'jwt-decode';
-
 import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser } from './store/actions/authActions';
+import { setCurrentUser, logoutUser } from './store/actions/authActions';
 
 import store from './store';
 
@@ -24,33 +23,45 @@ if (localStorage.jwtToken) {
   const decoded = jtwDecode(localStorage.jwtToken);
   // Set user and set isAuthenticated
   store.dispatch(setCurrentUser(decoded));
+  // Check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+    // TODO: Clear current profile
+
+    // Redirect to login
+    window.location.href = '/login';
+  }
 }
 
-function App() {
-  return (
-    <Provider store={ store }>
-      <Router>
-        <div className='App'>
-          <Navbar />
-          <Route
-            exact
-            path='/'
-            component={ Landing } />
-          <div className='container'>
+class App extends Component {
+  render() {
+    return (
+      <Provider store={ store }>
+        <Router>
+          <div className='App'>
+            <Navbar />
             <Route
               exact
-              path='/register'
-              component={ Register } />
-            <Route
-              exact
-              path='/login'
-              component={ Login } />
+              path='/'
+              component={ Landing } />
+            <div className='container'>
+              <Route
+                exact
+                path='/register'
+                component={ Register } />
+              <Route
+                exact
+                path='/login'
+                component={ Login } />
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </Router>
-    </Provider>
-  );
+        </Router>
+      </Provider>
+    );
+  }
 }
 
 export default App;
