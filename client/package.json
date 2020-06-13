@@ -88,7 +88,7 @@
         "single"
       ],
       "semi": [
-        "error",
+        2,
         "always"
       ],
       "getter-return": [
@@ -195,7 +195,7 @@
       ],
       "arrow-body-style": [
         "warn",
-        "never",
+        "as-needed",
         {
           "requireReturnForObjectLiteral": true
         }

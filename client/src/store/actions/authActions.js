@@ -4,16 +4,18 @@ import setAuthToken from '../../utils/setAuthToken';
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
 
 // Set logged in user
-export const setCurrentUser = decoded => ({
-  type: SET_CURRENT_USER,
-  payload: decoded
-});
+export const setCurrentUser = decoded => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: decoded
+  };
+};
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post('/api/users/register', userData)
-    .then(res => history.push('/login'))
+    .then(() => history.push('/login'))
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { connect } from 'react-redux';
 import { registerUser } from '../../store/actions/authActions';
@@ -62,33 +61,33 @@ class Register extends Component {
               <form
                 onSubmit={ this.onSubmit }
                 noValidate>
-                  <TextFieldGroup
-                    placeholder='Name'
-                    name='name'
-                    value={ this.state.name }
-                    onChange={ this.onChange }
-                    error={ errors.name } />
-                  <TextFieldGroup
-                    placeholder='Email Address'
-                    name='email'
-                    type='email'
-                    value={ this.state.email }
-                    onChange={ this.onChange }
-                    error={ errors.email } />
-                  <TextFieldGroup
-                    placeholder='Password'
-                    name='password'
-                    type='password'
-                    value={ this.state.password }
-                    onChange={ this.onChange }
-                    error={ errors.password } />
-                  <TextFieldGroup
-                    placeholder='Confirm Password'
-                    name='password2'
-                    type='password'
-                    value={ this.state.password2 }
-                    onChange={ this.onChange }
-                    error={ errors.password2 } />
+                <TextFieldGroup
+                  placeholder='Name'
+                  name='name'
+                  value={ this.state.name }
+                  onChange={ this.onChange }
+                  error={ errors.name } />
+                <TextFieldGroup
+                  placeholder='Email Address'
+                  name='email'
+                  type='email'
+                  value={ this.state.email }
+                  onChange={ this.onChange }
+                  error={ errors.email } />
+                <TextFieldGroup
+                  placeholder='Password'
+                  name='password'
+                  type='password'
+                  value={ this.state.password }
+                  onChange={ this.onChange }
+                  error={ errors.password } />
+                <TextFieldGroup
+                  placeholder='Confirm Password'
+                  name='password2'
+                  type='password'
+                  value={ this.state.password2 }
+                  onChange={ this.onChange }
+                  error={ errors.password2 } />
                 <input
                   type='submit'
                   className='btn btn-info btn-block mt-4' />
@@ -107,9 +106,11 @@ Register.propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
-});
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+    errors: state.errors
+  };
+};
 
 export default connect(mapStateToProps, { registerUser })(withRouter(Register));
