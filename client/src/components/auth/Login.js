@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../store/actions/authActions';
 
-import TextFieldGroup from '../common/TextFieldGroup';
+import TextFieldGroup from '../Common/TextFieldGroup';
 
 
 class Login extends Component {

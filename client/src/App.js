@@ -9,12 +9,12 @@ import { clearCurrentProfile } from './store/actions/profileActions';
 
 import store from './store';
 
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import Footer from './components/layout/Footer';
-import Landing from './components/layout/Landing';
-import Navbar from './components/layout/Navbar';
-import Dashboard from './components/dashboard/Dashboard';
+import Login from './components/Auth/Login';
+import Register from './components/Auth/Register';
+import Footer from './components/Layout/Footer';
+import Landing from './components/Layout/Landing';
+import Navbar from './components/Layout/Navbar';
+import Dashboard from './components/Dashboard/Dashboard';
 
 import './App.css';
 

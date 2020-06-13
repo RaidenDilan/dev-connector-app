@@ -195,7 +195,7 @@
       ],
       "arrow-body-style": [
         "warn",
-        "as-needed",
+        "never",
         {
           "requireReturnForObjectLiteral": true
         }
