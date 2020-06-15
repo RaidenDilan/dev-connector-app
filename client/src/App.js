@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import jtwDecode from 'jwt-decode';
-import setAuthToken from './utils/setAuthToken';
+import setAuthToken from './shared/utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './store/actions/authActions';
 import { clearCurrentProfile } from './store/actions/profileActions';
 
