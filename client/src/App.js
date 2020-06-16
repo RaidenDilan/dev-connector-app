@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import jtwDecode from 'jwt-decode';
 import setAuthToken from './shared/utils/setAuthToken';
+
 import { setCurrentUser, logoutUser } from './store/actions/authActions';
 import { clearCurrentProfile } from './store/actions/profileActions';
 
@@ -11,9 +12,11 @@ import store from './store';
 
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
+
 import Footer from './components/Layout/Footer';
 import Landing from './components/Layout/Landing';
 import Navbar from './components/Layout/Navbar';
+
 import Dashboard from './components/Dashboard/Dashboard';
 import CreateProfile from './components/CreateProfile/CreateProfile';
 
@@ -24,19 +27,14 @@ import './App.css';
 // Check for token
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken); // Swt auth token header auth
-  // Decode token and get user info expiration
-  const decoded = jtwDecode(localStorage.jwtToken);
-  // Set user and set isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
-  // Check for expired token
-  const currentTime = Date.now() / 1000;
+  const decoded = jtwDecode(localStorage.jwtToken); // Decode token and get user info expiration
+  store.dispatch(setCurrentUser(decoded)); // Set user and set isAuthenticated
+  const currentTime = Date.now() / 1000; // Check for expired token
+
   if (decoded.exp < currentTime) {
-    // Logout user
-    store.dispatch(logoutUser());
-    // Clear current profile
-    store.dispatch(clearCurrentProfile());
-    // Redirect to login
-    window.location.href = '/login';
+    store.dispatch(logoutUser()); // Logout user
+    store.dispatch(clearCurrentProfile()); // Clear current profile
+    window.location.href = '/login'; // Redirect to login
   }
 }
 
