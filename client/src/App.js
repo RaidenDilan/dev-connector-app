@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import jtwDecode from 'jwt-decode';
@@ -15,6 +15,8 @@ import Footer from './components/Layout/Footer';
 import Landing from './components/Layout/Landing';
 import Navbar from './components/Layout/Navbar';
 import Dashboard from './components/Dashboard/Dashboard';
+
+import PrivateRoute from './components/Common/PrivateRoute';
 
 import './App.css';
 
@@ -57,10 +59,12 @@ class App extends Component {
                 exact
                 path='/login'
                 component={ Login } />
-              <Route
-                exact
-                path='/Dashboard'
-                component={ Dashboard } />
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path='/Dashboard'
+                  component={ Dashboard } />
+              </Switch>
             </div>
             <Footer />
           </div>

@@ -17,26 +17,30 @@ class Dashboard extends Component {
 
     let dashboardContent;
 
-    if (profile === null || loading) dashboardContent = <Spinner />
+    if (profile === null || loading) dashboardContent = <Spinner />;
     else {
       // Check if logged in user has profile data
-      if (Object.keys(profile).length > 0) dashboardContent = <h4>TODO: DISPLAY PROFILE</h4>
+      if (Object.keys(profile).length > 0) dashboardContent = <h4>TODO: DISPLAY PROFILE</h4>;
       // User is logged in but has no profile
-      else dashboardContent = (
-        <div>
-          <p className="lead text-muted">Welcome { user.name }</p>
-          <p>You have not yet setup a profile, please add some info.</p>
-          <Link to='/create-profile' className='btn btn-lg btn-info' >Create Profile</Link>
-        </div>
-      );
+      else {
+        dashboardContent = (
+          <div>
+            <p className='lead text-muted'>Welcome { user.name }</p>
+            <p>You have not yet setup a profile, please add some info.</p>
+            <Link
+              to='/create-profile'
+              className='btn btn-lg btn-info' >Create Profile</Link>
+          </div>
+        );
+      }
     }
 
     return (
-      <div className="dashboard">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
+      <div className='dashboard'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-12'>
+              <h1 className='display-4'>Dashboard</h1>
               { dashboardContent }
             </div>
           </div>
@@ -50,11 +54,13 @@ Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
-}
+};
 
-const mapStateToProps = state => ({
-  profile: state.profile,
-  auth: state.auth
-});
+const mapStateToProps = state => {
+  return {
+    profile: state.profile,
+    auth: state.auth
+  };
+};
 
 export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);

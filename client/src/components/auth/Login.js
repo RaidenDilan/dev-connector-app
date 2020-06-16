@@ -7,7 +7,6 @@ import { loginUser } from '../../store/actions/authActions';
 
 import TextFieldGroup from '../Common/TextFieldGroup';
 
-
 class Login extends Component {
   constructor() {
     super();
