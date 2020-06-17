@@ -20,6 +20,32 @@ class Navbar extends Component {
         <li className='nav-item'>
           <Link
             className='nav-link'
+            to='/dashboard'>
+            Dashboard
+          </Link>
+        </li>
+        <li className='nav-item'>
+          <a
+            href=''
+            onClick={ this.onLogoutClick.bind(this) }
+            className='nav-link'>
+            <img
+              className='rounded-circle'
+              src={ user.avatar }
+              alt={ user.name }
+              style={ { width: '25px', marginRight: '5px' } }
+              title='You must have a Gravatar connected to your email to display an image' />{ ' ' }
+            Logout
+          </a>
+        </li>
+      </ul>
+    );
+
+    const guestLinks = (
+      <ul className='navbar-nav ml-auto'>
+        <li className='nav-item'>
+          <Link
+            className='nav-link'
             to='/register'>
             Sign Up
           </Link>
@@ -30,26 +56,6 @@ class Navbar extends Component {
             to='/login'>
             Login
           </Link>
-        </li>
-      </ul>
-    );
-
-    const guestLinks = (
-      <ul className='navbar-nav ml-auto'>
-        <li className='nav-item'>
-          <a
-            href=''
-            onClick={ this.onLogoutClick.bind(this) }
-            className='nav-link'>
-            <img
-              className='rounded-circle'
-              src={ user.avatar }
-              alt={ user.name }
-              title='You must have a Gravatar connected to your email to display an image'
-              style={ { width: '25px', marginRight: '5px' } } />
-            { ' ' }
-            Logout
-          </a>
         </li>
       </ul>
     );
@@ -83,7 +89,7 @@ class Navbar extends Component {
                 </Link>
               </li>
             </ul>
-            { !isAuthenticated ? authLinks : guestLinks }
+            { isAuthenticated ? authLinks : guestLinks }
           </div>
         </div>
       </nav>
