@@ -15,7 +15,7 @@ const SelectListGroup = ({
     <option
       key={option.label}
       value={option.value} >
-        { options }
+        { option.label }
     </option>
   ));
 

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../store/actions/profileActions';
-
 import Spinner from '../Common/Spinner';
 
 class Dashboard extends Component {
@@ -12,7 +11,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const user = this.props.auth;
+    const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
 
     let dashboardContent;
@@ -56,11 +55,9 @@ Dashboard.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => {
-  return {
-    profile: state.profile,
-    auth: state.auth
-  };
-};
+const mapStateToProps = state => ({
+  profile: state.profile,
+  auth: state.auth
+});
 
 export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
