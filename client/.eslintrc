@@ -47,6 +47,7 @@
     "node": true
   },
   "rules": {
+    "no-alert": 0,
     "indent": [
       "warn",
       2,
