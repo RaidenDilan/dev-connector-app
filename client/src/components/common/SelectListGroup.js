@@ -13,9 +13,9 @@ const SelectListGroup = ({
 }) => {
   const selectOptions = options.map(option => (
     <option
-      key={option.label}
-      value={option.value} >
-        { option.label }
+      key={ option.label }
+      value={ option.value } >
+      { option.label }
     </option>
   ));
 
@@ -29,14 +29,13 @@ const SelectListGroup = ({
         name={ name }
         value={ value }
         onChange={ onChange } >
-          { selectOptions }
+        { selectOptions }
       </select>
       { info && <small className='form-text text-muted'>{ info }</small> }
       { error && <div className='invalid-feedback'>{ error }</div> }
     </div>
-  )
-
-  };
+  );
+};
 
 SelectListGroup.propTypes = {
   name: PropTypes.string.isRequired,

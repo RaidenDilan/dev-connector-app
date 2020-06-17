@@ -55,9 +55,11 @@ Dashboard.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  profile: state.profile,
-  auth: state.auth
-});
+const mapStateToProps = state => {
+  return {
+    profile: state.profile,
+    auth: state.auth
+  };
+};
 
 export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
