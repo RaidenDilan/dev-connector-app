@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import ProfileHeader from './Credentials/ProfileHeader';
 import ProfileAbout from './Credentials/ProfileAbout';
-import ProfileGithub from './Credentials/ProfileGithub';
 import ProfileCredentials from './Credentials/ProfileCredentials';
+import ProfileGithub from './Credentials/ProfileGithub';
+
 import Spinner from '../Common/Spinner';
 import { getProfileByHandle } from '../../store/actions/profileActions';
 
@@ -43,8 +45,8 @@ class Profile extends Component {
             education={ profile.education }
             experience={ profile.experience } />
           {
-            profile.githubusername
-              ? (<ProfileGithub username={ profile.githubusername } />)
+            profile.githubUsername
+              ? (<ProfileGithub username={ profile.githubUsername } />)
               : null
           }
         </div>
