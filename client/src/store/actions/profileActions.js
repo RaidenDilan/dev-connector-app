@@ -77,6 +77,20 @@ export const deleteExperience = id => dispatch => {
     }));
 };
 
+// Delete Education
+export const deleteEducation = id => dispatch => {
+  axios
+    .delete(`/api/profile/education/${ id }`)
+    .then(res => dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    }))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }));
+};
+
 // Clear profile
 export const clearCurrentProfile = () => {
   return {
