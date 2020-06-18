@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import ProfileHeader from './Credentials/ProfileHeader';
-import ProfileAbout from './Credentials/ProfileAbout';
-import ProfileCredentials from './Credentials/ProfileCredentials';
-import ProfileGithub from './Credentials/ProfileGithub';
+import ProfileHeader from './ShowProfile/ProfileHeader';
+import ProfileAbout from './ShowProfile/ProfileAbout';
+import ProfileCredentials from './ShowProfile/ProfileCredentials';
+import ProfileGithub from './ShowProfile/ProfileGithub';
 
 import Spinner from '../Common/Spinner';
 import { getProfileByHandle } from '../../store/actions/profileActions';

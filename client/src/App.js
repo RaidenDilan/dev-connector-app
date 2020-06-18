@@ -22,9 +22,8 @@ import Navbar from './components/Layout/Navbar';
 import Dashboard from './components/Dashboard/Dashboard';
 import CreateProfile from './components/Profile/CreateProfile';
 import EditProfile from './components/Profile/EditProfile';
-import AddExperience from './components/Profile/AddExperience';
-import AddEducation from './components/Profile/AddEducation';
-
+import AddExperience from './components/Profile/AddCredentials/AddExperience';
+import AddEducation from './components/Profile/AddCredentials/AddEducation';
 import Profiles from './components/Profiles/Profiles';
 import Profile from './components/Profile/Profile';
 

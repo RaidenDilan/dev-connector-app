@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import TextFieldGroup from '../Common/TextFieldGroup';
-import TextAreaFieldGroup from '../Common/TextAreaFieldGroup';
-import { addEducation } from '../../store/actions/profileActions';
+import TextFieldGroup from '../../Common/TextFieldGroup';
+import TextAreaFieldGroup from '../../Common/TextAreaFieldGroup';
+import { addExperience } from '../../../store/actions/profileActions';
 
-class AddEducation extends Component {
+class AddExperience extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      school: '',
-      degree: '',
-      fieldOfStudy: '',
+      company: '',
+      title: '',
+      location: '',
       from: '',
       to: '',
       current: false,
@@ -33,17 +33,17 @@ class AddEducation extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const eduData = {
-      school: this.state.school,
-      degree: this.state.degree,
-      fieldOfStudy: this.state.fieldOfStudy,
+    const expData = {
+      company: this.state.company,
+      title: this.state.title,
+      location: this.state.location,
       from: this.state.from,
       to: this.state.to,
       current: this.state.current,
       description: this.state.description
     };
 
-    this.props.addEducation(eduData, this.props.history);
+    this.props.addExperience(expData, this.props.history);
   }
 
   onChange(e) {
@@ -61,7 +61,7 @@ class AddEducation extends Component {
     const { errors } = this.state;
 
     return (
-      <div className='add-education'>
+      <div className='add-experience'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-8 m-auto'>
@@ -70,30 +70,30 @@ class AddEducation extends Component {
                 className='btn btn-light'>
                 Go Back
               </Link>
-              <h1 className='display-4 text-center'>Add Education</h1>
+              <h1 className='display-4 text-center'>Add Experience</h1>
               <p className='lead text-center'>
-                Add any school, bootcamp, etc that you have attended
+                Add any job or position that you have had in the past or current
               </p>
               <small className='d-block pb-3'>* = required fields</small>
               <form onSubmit={ this.onSubmit }>
                 <TextFieldGroup
-                  placeholder='* School'
-                  name='school'
-                  value={ this.state.school }
+                  placeholder='* Company'
+                  name='company'
+                  value={ this.state.company }
                   onChange={ this.onChange }
-                  error={ errors.school } />
+                  error={ errors.company } />
                 <TextFieldGroup
-                  placeholder='* Degree or Certification'
-                  name='degree'
-                  value={ this.state.degree }
+                  placeholder='* Job Title'
+                  name='title'
+                  value={ this.state.title }
                   onChange={ this.onChange }
-                  error={ errors.degree } />
+                  error={ errors.title } />
                 <TextFieldGroup
-                  placeholder='* Field of Study'
-                  name='fieldOfStudy'
-                  value={ this.state.fieldOfStudy }
+                  placeholder='Location'
+                  name='location'
+                  value={ this.state.location }
                   onChange={ this.onChange }
-                  error={ errors.fieldOfStudy } />
+                  error={ errors.location } />
                 <h6>From Date</h6>
                 <TextFieldGroup
                   name='from'
@@ -121,16 +121,16 @@ class AddEducation extends Component {
                   <label
                     htmlFor='current'
                     className='form-check-label'>
-                    Present
+                    Current Job
                   </label>
                 </div>
                 <TextAreaFieldGroup
-                  placeholder='Education Description'
+                  placeholder='Job Description'
                   name='description'
                   value={ this.state.description }
                   onChange={ this.onChange }
                   error={ errors.description }
-                  info='Tell us about the program that you were in' />
+                  info='Tell us about the the position' />
                 <input
                   type='submit'
                   value='Submit'
@@ -144,8 +144,8 @@ class AddEducation extends Component {
   }
 }
 
-AddEducation.propTypes = {
-  addEducation: PropTypes.func.isRequired,
+AddExperience.propTypes = {
+  addExperience: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -155,4 +155,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { addEducation })(withRouter(AddEducation));
+export default connect(mapStateToProps, { addExperience })(withRouter(AddExperience));
