@@ -10,6 +10,8 @@ import { clearCurrentProfile } from './store/actions/profileActions';
 
 import store from './store';
 
+import PrivateRoute from './components/Common/PrivateRoute';
+
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 
@@ -26,7 +28,7 @@ import AddEducation from './components/Profile/AddEducation';
 import Profiles from './components/Profiles/Profiles';
 import Profile from './components/Profile/Profile';
 
-import PrivateRoute from './components/Common/PrivateRoute';
+import NotFound from './components/NotFound/NotFound';
 
 import './App.css';
 
@@ -102,6 +104,10 @@ class App extends Component {
                   path='/add-education'
                   component={ AddEducation } />
               </Switch>
+              <Route
+                exact
+                path='/not-found'
+                component={ NotFound } />
             </div>
             <Footer />
           </div>
