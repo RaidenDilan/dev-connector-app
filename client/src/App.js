@@ -20,6 +20,7 @@ import Navbar from './components/Layout/Navbar';
 import Dashboard from './components/Dashboard/Dashboard';
 import CreateProfile from './components/Profile/CreateProfile';
 import EditProfile from './components/Profile/EditProfile';
+import AddExperience from './components/Profile/AddExperience';
 
 import PrivateRoute from './components/Common/PrivateRoute';
 
@@ -76,6 +77,12 @@ class App extends Component {
                   exact
                   path='/edit-profile'
                   component={ EditProfile } />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path='/add-experience'
+                  component={ AddExperience } />
               </Switch>
             </div>
             <Footer />
