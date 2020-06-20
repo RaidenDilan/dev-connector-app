@@ -8,6 +8,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case POST_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
     case ADD_POST:
       return {
         ...state,
@@ -18,11 +23,6 @@ export default function (state = initialState, action) {
         ...state,
         posts: action.payload,
         loading: false
-      };
-    case POST_LOADING:
-      return {
-        ...state,
-        loading: true
       };
     default:
       return state;

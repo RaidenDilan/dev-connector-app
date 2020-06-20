@@ -6,6 +6,13 @@ import {
   GET_POSTS
 } from './types';
 
+// Profile loading
+export const setPostLoading = () => {
+  return {
+    type: POST_LOADING
+  };
+};
+
 // Add post
 export const addPost = postData => dispatch => {
   axios
@@ -20,11 +27,11 @@ export const addPost = postData => dispatch => {
     }));
 };
 
-// Add post
+// Get post
 export const getPosts = () => dispatch => {
   dispatch(setPostLoading());
   axios
-    .post('/api/posts')
+    .get('/api/posts')
     .then(res => dispatch({
       type: GET_POSTS,
       payload: res.data
@@ -33,11 +40,4 @@ export const getPosts = () => dispatch => {
       type: GET_POSTS,
       payload: null
     }));
-};
-
-// Profile loading
-export const setPostLoading = () => {
-  return {
-    type: POST_LOADING
-  };
 };

@@ -18,6 +18,7 @@ class Posts extends Component {
     if (posts === null || loading) postContent = <Spinner />;
     else postContent = <PostFeed posts={ posts } />;
 
+
     return (
       <div className='feed'>
         <div className='container'>
@@ -34,7 +35,7 @@ class Posts extends Component {
 }
 
 Posts.propTypes = {
-  // getPosts: PropTypes.func.isRequired,
+  getPosts: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired
 };
 
