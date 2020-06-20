@@ -21,6 +21,7 @@ class PostItem extends Component {
   findUserLike(likes) {
     const { auth } = this.props;
     if (likes.filter(like => like.user === auth.user.id).length > 0) return true;
+
     return false;
   }
 
@@ -31,12 +32,12 @@ class PostItem extends Component {
       <div className='card card-body mb-3'>
         <div className='row'>
           <div className='col-md-2'>
-            <a href='profile.html'>
+            <Link to={ `/profile/${ auth.user.name }` }>
               <img
                 className='rounded-circle d-none d-md-block'
                 src={ post.avatar }
                 alt='' />
-            </a>
+            </Link>
             <br />
             <p className='text-center'>{ post.name }</p>
           </div>
