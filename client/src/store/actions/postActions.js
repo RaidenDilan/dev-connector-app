@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
   ADD_POST,
   POST_LOADING,
-  GET_ERRORS
+  GET_ERRORS,
+  GET_POSTS
 } from './types';
 
 // Add post
@@ -19,8 +20,23 @@ export const addPost = postData => dispatch => {
     }));
 };
 
+// Add post
+export const getPosts = () => dispatch => {
+  dispatch(setPostLoading());
+  axios
+    .post('/api/posts')
+    .then(res => dispatch({
+      type: GET_POSTS,
+      payload: res.data
+    }))
+    .catch(() => dispatch({
+      type: GET_POSTS,
+      payload: null
+    }));
+};
+
 // Profile loading
-export const setProfileLoading = () => {
+export const setPostLoading = () => {
   return {
     type: POST_LOADING
   };

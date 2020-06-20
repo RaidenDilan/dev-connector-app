@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostForm from './PostForm';
-// import PostFeed from './PostFeed';
+import PostFeed from './PostFeed';
 import Spinner from '../Common/Spinner';
-// import { getPosts } from '../../store/actions/postActions';
+import { getPosts } from '../../store/actions/postActions';
 
 class Posts extends Component {
-  // componentDidMount() {
-  //   this.props.getPosts();
-  // }
+  componentDidMount() {
+    this.props.getPosts();
+  }
 
   render() {
     const { posts, loading } = this.props.post;
     let postContent;
 
     if (posts === null || loading) postContent = <Spinner />;
-    // else postContent = <PostFeed posts={ posts } />;
+    else postContent = <PostFeed posts={ posts } />;
 
     return (
       <div className='feed'>
@@ -42,4 +42,4 @@ const mapStateToProps = state => ({
   post: state.post
 });
 
-export default connect(mapStateToProps, {})(Posts);
+export default connect(mapStateToProps, { getPosts })(Posts);
