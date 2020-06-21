@@ -25,7 +25,6 @@ class Profile extends Component {
     let profileContent;
 
     if (profile === null || loading) profileContent = <Spinner />;
-
     else {
       profileContent = (
         <div>
@@ -39,11 +38,13 @@ class Profile extends Component {
             </div>
             <div className='col-md-6' />
           </div>
-          <ProfileHeader profile={ profile } />
-          <ProfileAbout profile={ profile } />
-          <ProfileCredentials
-            education={ profile.education }
-            experience={ profile.experience } />
+          <div>
+            <ProfileHeader profile={ profile } />
+            <ProfileAbout profile={ profile } />
+            <ProfileCredentials
+              education={ profile.education }
+              experience={ profile.experience } />
+          </div>
           {
             profile.githubUsername
               ? (<ProfileGithub username={ profile.githubUsername } />)

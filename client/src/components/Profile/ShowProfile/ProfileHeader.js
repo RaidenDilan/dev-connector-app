@@ -5,6 +5,8 @@ class ProfileHeader extends Component {
   render() {
     const { profile } = this.props;
 
+    console.log('[header] props', this.props);
+
     return (
       <div className='row'>
         <div className='col-md-12'>

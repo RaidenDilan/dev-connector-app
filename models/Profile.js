@@ -10,7 +10,7 @@ const profileSchema = new Schema({
   location: { type: String },
   status: { type: String, required: true },
   skills: { type: [String], required: true },
-  bio: { type: String },
+  bio: { type: String, required: true },
   githubUsername: { type: String },
   experience: [{
     title: { type: String, required: true },
