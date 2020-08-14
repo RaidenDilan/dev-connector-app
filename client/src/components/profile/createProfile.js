@@ -66,7 +66,6 @@ class CreateProfile extends Component {
 
   render() {
     const { errors, displaySocialInputs } = this.state;
-
     let socialInputs;
 
     if (displaySocialInputs) {
