@@ -20,7 +20,7 @@ import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 
 import Dashboard from './components/dashboard/Dashboard';
-import CreateProfile from './components/profile/createProfile';
+import CreateProfile from './components/profile/CreateProfile';
 import EditProfile from './components/profile/EditProfile';
 import AddExperience from './components/profile/addCredentials/AddExperience';
 import AddEducation from './components/profile/addCredentials/AddEducation';

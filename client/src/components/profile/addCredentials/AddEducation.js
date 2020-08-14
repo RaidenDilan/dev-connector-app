@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import TextFieldGroup from '../../Common/TextFieldGroup';
-import TextAreaFieldGroup from '../../Common/TextAreaFieldGroup';
+import TextFieldGroup from '../../common/TextFieldGroup';
+import TextAreaFieldGroup from '../../common/TextAreaFieldGroup';
 import { addEducation } from '../../../store/actions/profileActions';
 
 class AddEducation extends Component {

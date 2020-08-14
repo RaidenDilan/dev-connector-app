@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import TextFieldGroup from '../Common/TextFieldGroup';
-import TextAreaFieldGroup from '../Common/TextAreaFieldGroup';
-import InputGroup from '../Common/InputGroup';
-import SelectListGroup from '../Common/SelectListGroup';
+import TextFieldGroup from '../common/TextFieldGroup';
+import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+import InputGroup from '../common/InputGroup';
+import SelectListGroup from '../common/SelectListGroup';
 import { createProfile } from '../../store/actions/profileActions';
 
 class CreateProfile extends Component {

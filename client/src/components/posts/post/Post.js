@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import PostItem from '../PostItem';
 import CommentForm from './CommentForm';
 import CommentFeed from './CommentFeed';
-import Spinner from '../../Common/Spinner';
+import Spinner from '../../common/Spinner';
 import { getPost } from '../../../store/actions/postActions';
 
 class Post extends Component {

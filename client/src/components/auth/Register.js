@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerUser } from '../../store/actions/authActions';
 
-import TextFieldGroup from '../Common/TextFieldGroup';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class Register extends Component {
   constructor() {
