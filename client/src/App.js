@@ -10,7 +10,7 @@ import { clearCurrentProfile } from './store/actions/profileActions';
 
 import store from './store';
 
-import PrivateRoute from './components/Common/PrivateRoute';
+import PrivateRoute from './components/common/PrivateRoute';
 
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
