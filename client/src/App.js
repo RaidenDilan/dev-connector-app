@@ -20,7 +20,7 @@ import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 
 import Dashboard from './components/dashboard/Dashboard';
-import CreateProfile from './components/profile/CreateProfile';
+import CreateProfile from './components/profile/createProfile';
 import EditProfile from './components/profile/EditProfile';
 import AddExperience from './components/profile/addCredentials/AddExperience';
 import AddEducation from './components/profile/addCredentials/AddEducation';
@@ -30,7 +30,7 @@ import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
 import Post from './components/posts/post/Post';
 
-import NotFound from './components/NotFound/NotFound';
+import NotFound from './components/notFound/NotFound';
 
 import './App.css';
 
