@@ -22,10 +22,21 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose
-  .connect(dbURI, dbOps)
-  .then(() => console.log('MongoDB Connected!'))
-  .catch(err => console.log('MongoDB failed to connect!', err));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(dbURI, dbOps);
+    console.log("MongoDB is Connected...");
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
+
+connectDB();
+// mongoose
+//   .connect(dbURI, dbOps)
+//   .then(() => console.log('MongoDB Connected!'))
+//   .catch(err => console.log('MongoDB failed to connect!', err));
 
 // passport middleware
 app.use(passport.initialize());
