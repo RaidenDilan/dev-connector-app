@@ -45,11 +45,7 @@ class Profile extends Component {
               education={ profile.education }
               experience={ profile.experience } />
           </div>
-          {
-            profile.githubUsername
-              ? (<ProfileGithub username={ profile.githubUsername } />)
-              : null
-          }
+          { profile.githubUsername ? (<ProfileGithub username={ profile.githubUsername } />) : null }
         </div>
       );
     }

@@ -36,7 +36,6 @@ class ProfileGithub extends Component {
 
   render() {
     const { repos } = this.state;
-
     const repoItems = repos.map(repo => (
       <div
         key={ repo.id }
@@ -79,5 +78,8 @@ class ProfileGithub extends Component {
   }
 }
 
+ProfileGithub.propTypes = {
+  username: PropTypes.string.isRequired
+};
 
 export default ProfileGithub;
