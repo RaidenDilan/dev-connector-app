@@ -43,13 +43,14 @@ class ProfileGithub extends Component {
         <div className='row'>
           <div className='col-md-6'>
             <h4>
-              <Link
-                to={ repo.html_url }
+              { /* Using <Link /> will not work with external links, use <a /> instead */ }
+              <a
+                href={ repo.html_url }
                 className='text-info'
                 target='_blank'
                 rel='noreferrer'>
                 { repo.name }
-              </Link>
+              </a>
             </h4>
             <p>{ repo.description }</p>
           </div>
