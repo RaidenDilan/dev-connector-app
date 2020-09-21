@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class ProfileGithub extends Component {
@@ -7,8 +7,9 @@ class ProfileGithub extends Component {
     super(props);
 
     this.state = {
-      clientId: process.env.DEVCON_GITHUB_CLIENT_ID,
-      clientSecret: process.env.DEVCON_GITHUB_CLIENT_SECRET,
+      // clientId: process.env.DEVCON_GITHUB_CLIENT_ID,
+      // clientSecret: process.env.DEVCON_GITHUB_CLIENT_SECRET,
+      accessToken: process.env.REACT_APP_DEVCON_GITHUB_ACCESS_TOKEN,
       count: 5,
       sort: 'created: asc',
       repos: []
@@ -18,11 +19,15 @@ class ProfileGithub extends Component {
 
   componentDidMount() {
     const { username } = this.props;
-    const { count, sort, clientId, clientSecret } = this.state;
+    const { count, sort, accessToken } = this.state;
     // const abortController = new AbortController();
     // const signal = abortController;
 
-    fetch(`https://api.github.com/users/${ username }/repos?per_page=${ count }&sort=${ sort }&client_id=${ clientId }&client_secret=${ clientSecret }`)
+    fetch(`https://api.github.com/users/${ username }/repos?per_page=${ count }&sort=${ sort }`, {
+      headers: {
+        'Authorization': accessToken
+      }
+    })
       .then(res => res.json())
       .then(data => {
         if (this.myRef) this.setState({ repos: data });
@@ -30,9 +35,10 @@ class ProfileGithub extends Component {
       .catch(err => console.log(err));
   }
 
-  // componentWillUnmount() {
-  //   if (this.abortController) this.abortController.abort();
-  // }
+  componentWillUnmount() {
+    // if (this.abortController) this.abortController.abort();
+    this.myRef = null;
+  }
 
   render() {
     const { repos } = this.state;
@@ -48,7 +54,7 @@ class ProfileGithub extends Component {
                 href={ repo.html_url }
                 className='text-info'
                 target='_blank'
-                rel='noreferrer'>
+                rel='noopener noreferrer'>
                 { repo.name }
               </a>
             </h4>

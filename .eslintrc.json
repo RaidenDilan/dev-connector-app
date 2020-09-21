@@ -1,0 +1,103 @@
+{
+  // "extends": [
+  //   "eslint:recommended",
+  //   "plugin:node/recommended"
+  // ],
+  // "parserOptions": {
+  //   // Only ESLint 6.2.0 and later support ES2020.
+  //   "ecmaVersion": 2020
+  // },
+  // "rules": {
+  //   "node/exports-style": [
+  //     "error",
+  //     "module.exports"
+  //   ],
+  //   "node/file-extension-in-import": [
+  //     "error",
+  //     "always"
+  //   ],
+  //   "node/prefer-global/buffer": [
+  //     "error",
+  //     "always"
+  //   ],
+  //   "node/prefer-global/console": [
+  //     "error",
+  //     "always"
+  //   ],
+  //   "node/prefer-global/process": [
+  //     "error",
+  //     "always"
+  //   ],
+  //   "node/prefer-global/url-search-params": [
+  //     "error",
+  //     "always"
+  //   ],
+  //   "node/prefer-global/url": [
+  //     "error",
+  //     "always"
+  //   ],
+  //   "node/prefer-promises/dns": "error",
+  //   "node/prefer-promises/fs": "error"
+  // }
+  // // "env": {
+  // //   "es6": true,
+  // //   "browser": true
+  // // },
+  // // "rules": {
+  // //   "brace-style": [
+  // //     "error",
+  // //     "stroustrup"
+  // //   ],
+  // //   "comma-dangle": [
+  // //     "error",
+  // //     "never"
+  // //   ],
+  // //   "no-unused-vars": [
+  // //     "error",
+  // //     {
+  // //       "vars": "all",
+  // //       "args": "none",
+  // //       "ignoreRestSiblings": false
+  // //     }
+  // //   ],
+  // //   "no-var": [
+  // //     "off"
+  // //   ],
+  // //   "one-var": [
+  // //     "off"
+  // //   ],
+  // //   "object-curly-newline": 0,
+  // //   "no-param-reassign": 0,
+  // //   "no-console": 0,
+  // //   "no-undef": 0,
+  // //   "no-shadow": 0,
+  // //   "no-underscore-dangle": 0,
+  // //   "no-multi-assign": 0,
+  // //   "eol-last": 0,
+  // //   "operator-linebreak": [
+  // //     "warn",
+  // //     "after"
+  // //   ],
+  // //   "arrow-parens": [
+  // //     1,
+  // //     "as-needed",
+  // //     {
+  // //       "requireForBlockBody": true
+  // //     }
+  // //   ],
+  // //   "implicit-arrow-linebreak": 0,
+  // //   "prefer-const": [
+  // //     0,
+  // //     {
+  // //       "destructuring": "all",
+  // //       "ignoreReadBeforeAssign": false
+  // //     }
+  // //   ],
+  // //   "consistent-return": 0,
+  // //   "max-len": 0,
+  // //   "template-curly-spacing": [
+  // //     "warn",
+  // //     "always"
+  // //   ]
+  // // }
+}

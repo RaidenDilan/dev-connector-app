@@ -17,70 +17,6 @@
   },
   "author": "Raiden Dilan <raiden18@me.com> (https://www.raidendilan.co.uk)",
   "license": "MIT",
-  "eslintConfig": {
-    "extends": "airbnb-base",
-    "env": {
-      "es6": true,
-      "browser": true
-    },
-    "rules": {
-      "brace-style": [
-        "error",
-        "stroustrup"
-      ],
-      "comma-dangle": [
-        "error",
-        "never"
-      ],
-      "no-unused-vars": [
-        "error",
-        {
-          "vars": "all",
-          "args": "none",
-          "ignoreRestSiblings": false
-        }
-      ],
-      "no-var": [
-        "off"
-      ],
-      "one-var": [
-        "off"
-      ],
-      "object-curly-newline": 0,
-      "no-param-reassign": 0,
-      "no-console": 0,
-      "no-undef": 0,
-      "no-shadow": 0,
-      "no-underscore-dangle": 0,
-      "no-multi-assign": 0,
-      "eol-last": 0,
-      "operator-linebreak": [
-        "warn",
-        "after"
-      ],
-      "arrow-parens": [
-        1,
-        "as-needed",
-        {
-          "requireForBlockBody": true
-        }
-      ],
-      "implicit-arrow-linebreak": 0,
-      "prefer-const": [
-        0,
-        {
-          "destructuring": "all",
-          "ignoreReadBeforeAssign": false
-        }
-      ],
-      "consistent-return": 0,
-      "max-len": 0,
-      "template-curly-spacing": [
-        "warn",
-        "always"
-      ]
-    }
-  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -95,6 +31,7 @@
     "validator": "^13.0.0"
   },
   "devDependencies": {
+    "eslint-plugin-node": "^11.1.0",
     "nodemon": "^2.0.4"
   }
 }
