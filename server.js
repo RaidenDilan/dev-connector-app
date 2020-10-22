@@ -6,7 +6,7 @@ const passport = require('passport');
 const path = require('path');
 const cors = require('cors');
 const compression = require('compression');
-const enforce = require('express-sslify');
+// const enforce = require('express-sslify');
 
 const { dbURI, dbOps, port } = require('./config/environment');
 
@@ -23,13 +23,13 @@ app.use(cors());
 // Serve static assets if in production
 if (process.env.NODE_ENG === 'production') {
   app.use(compression());
-  app.use(enforce.HTTPS({ trustProtoHeader: true })); // trustProtoHeader => Heroku runs a reverse-proxy
+  // app.use(enforce.HTTPS({ trustProtoHeader: true })); // trustProtoHeader => Heroku runs a reverse-proxy
   // Set static folder
   // app.use(express.static('client/build'));
   app.use(express.static(path.join(__dirname, 'client/build')));
   app.get('*', (req, res) => {
-    // res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
+    // res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
 
