@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
+const cors = require('cors');
+const compression = require('compression');
 
 const { dbURI, dbOps, port } = require('./config/environment');
 
@@ -13,17 +15,20 @@ const posts = require('./routes/api/posts');
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
+
 // Serve static assets if in production
 if (process.env.NODE_ENG === 'production') {
+  app.use(compression());
+  app.use(enforce.HTTPS({ trustProtoHeader: true })); // trustProtoHeader => Heroku runs a reverse-proxy
   // Set static folder
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
   });
 }
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 mongoose
   .connect(dbURI, dbOps)
