@@ -4,11 +4,12 @@
   "description": "Social network for developers",
   "main": "server.js",
   "scripts": {
-    "client": "cd client && npm start",
+    "client": "cd client && yarn start",
     "server": "nodemon server.js",
     "start": "node server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "build": "cd client && yarn run build",
+    "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
+    "heroku-postbuild": "cd client && yarn install && yarn install --only=dev --no-shrinkwrap && yarn run build"
   },
   "author": "Raiden Dilan <raiden18@me.com> (https://www.raidendilan.co.uk)",
   "license": "MIT",
