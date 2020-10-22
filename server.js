@@ -14,6 +14,13 @@ const posts = require('./routes/api/posts');
 
 const app = express();
 
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// DB Config
+// const db = require('./config/keys').mongoURI;
+
 mongoose
   .connect(dbURI, dbOps)
   .then(() => console.log('MongoDB Connected!'))
@@ -29,28 +36,25 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-// Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(compression());
-  // Set static folder
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-}
-
 // // Serve static assets if in production
 // if (process.env.NODE_ENV === 'production') {
 //   app.use(compression());
 //   // Set static folder
-//   app.use(express.static('client/build'));
+//   app.use(express.static(path.join(__dirname, 'client/build')));
 //   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 //   });
 // }
+
+// Server static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(compression());
+  // Set static folder
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
