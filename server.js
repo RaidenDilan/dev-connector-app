@@ -6,6 +6,7 @@ const passport = require('passport');
 const path = require('path');
 const cors = require('cors');
 const compression = require('compression');
+const enforce = require('express-sslify');
 
 const { dbURI, dbOps, port } = require('./config/environment');
 
