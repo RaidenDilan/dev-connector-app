@@ -19,6 +19,16 @@ mongoose
   .then(() => console.log('MongoDB Connected!'))
   .catch(err => console.log('MongoDB failed to connect!', err));
 
+// passport middleware
+app.use(passport.initialize());
+
+// passport config
+require('./config/passport')(passport);
+
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/posts', posts);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -42,14 +52,5 @@ if (process.env.NODE_ENV === 'production') {
 //   });
 // }
 
-// passport middleware
-app.use(passport.initialize());
-
-// passport config
-require('./config/passport')(passport);
-
-app.use('/api/users', users);
-app.use('/api/profile', profile);
-app.use('/api/posts', posts);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
