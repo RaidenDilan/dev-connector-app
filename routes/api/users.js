@@ -91,7 +91,7 @@ router.post('/login', (req, res) => {
         return res.status(404).json(errors);
       }
 
-      bcrypt
+      return bcrypt
         .compare(password, user.password)
         .then((isMatched) => {
           if (isMatched) {
@@ -102,8 +102,8 @@ router.post('/login', (req, res) => {
               avatar: user.avatar
             };
 
-            jwt.sign(payload, secret, { expiresIn: 3600 }, (err, token) => {
-              res.json({ success: true, token: `Bearer ${ token }` });
+            return jwt.sign(payload, secret, { expiresIn: 3600 }, (err, token) => {
+              return res.json({ success: true, token: `Bearer ${ token }` });
             });
           }
           else {

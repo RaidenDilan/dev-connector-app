@@ -14,6 +14,11 @@ const posts = require('./routes/api/posts');
 
 const app = express();
 
+mongoose
+  .connect(dbURI, dbOps)
+  .then(() => console.log('MongoDB Connected!'))
+  .catch(err => console.log('MongoDB failed to connect!', err));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -36,11 +41,6 @@ if (process.env.NODE_ENV === 'production') {
 //     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 //   });
 // }
-
-mongoose
-  .connect(dbURI, dbOps)
-  .then(() => console.log('MongoDB Connected!'))
-  .catch(err => console.log('MongoDB failed to connect!', err));
 
 // passport middleware
 app.use(passport.initialize());
